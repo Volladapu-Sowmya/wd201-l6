@@ -22,5 +22,5 @@
         "nodemon": "^2.0.20",
         "sequelize-cli": "^6.4.1",
         "supertest": "^6.2.4"
-    }
+    
 }
