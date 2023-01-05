@@ -4,8 +4,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="csrf-token" content="<%= csrfToken %>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TO-DO</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <title>To-Do</title>
+    <link rel="stylesheet" href="/css/style.css"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       const token = document.querySelector("meta[name='csrf-token']").getAttribute("content")
@@ -53,30 +53,46 @@
         }
       };
     </script>
-    </head>
-    <body>
-       <div class= "grid  grid-cols-6">
-        <div class="col-start-3 col-span-2">
-        <%- include("header.ejs") %> 
-        <form action="/todos" method="post">
-          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-            <div class="flex gap-2 py-4">
-                <div class="flex-auto">
-                    <input type="text" name="title" placeholder=" NEXT TO-DO" class="border border-gray-500 rounded text-gray-800 w-full p-2 text-sm" required />
-                </div>
+  </head>
+  <body>
+    <div class="grid grid-cols-6">
+      <div class="col-span-2 col-start-3">
+        <%- include("header.ejs") %>
+        <form action="/todos" method="post" class="mb-3">
+          <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+          <div class="flex gap-2">
             <div class="flex-auto">
-                <input type="date" name="dueDate" class="border border-gray-500 rounded text-gray-800 w-full p-2 text-sm leading-6 " required />
+              <input
+                type="text"
+                name="title"
+                placeholder="next?"
+                class="rounded border-2 border-gray-900 w-full p-2 text-sm"
+                required
+              />
+            </div>
+            <div class="flex-auto">
+              <input
+                name="dueDate"
+                type="date"
+                class="rounded border-2 border-gray-900 w-full p-2 text-sm leading-4"
+                required
+              />
             </div>
             <div class="flex-none">
-                <button type="submit" class="bg-green-400 text-white px-5 py-1.5 rounded font-medium mr-2 mb-2">Add</button>
-            </div>  
+              <input
+                type="submit"
+                value="Add"
+                class="text-white bg-green-600 px-5 rounded py-2 font-medium mr-2 mb-2"
+              />
             </div>
+          </div>
         </form>
-        <%- include('todos.ejs', {title: "Overdue", data: overdue}) %>
-        <%- include('todos.ejs', {title: "Due Today", data: dueToday}) %>
-        <%- include('todos.ejs', {title: "Due Later", data: dueLater}) %>
-        <%- include('todos.ejs', {title: "Completed Items", data: completedItems}) %>
+        <%- include('todos.ejs',{title : "Overdue",data: overdue}) %> <%-
+        include('todos.ejs',{title : "Due Today",data: dueToday}) %> <%-
+        include('todos.ejs',{title : "Due Later",data: dueLater}) %> <%-
+        include('todos.ejs',{title : "Completed Items",data: completedItems}) %>
+      </div>
     </div>
-</div>
-    </body>
+    <%- include("footer.ejs") %>
+  </body>
 </html>
