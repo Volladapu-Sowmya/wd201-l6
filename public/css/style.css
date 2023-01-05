@@ -1,8 +1,8 @@
 body {
-font-family: monospace;
-background: green;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background-color:pink;
 }
 
-.Todo-Item:hover .trash-icon{
-  display:block;
+.todoItem:hover .trashIcone {
+  display: block;
 }
