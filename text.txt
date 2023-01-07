@@ -1,0 +1,13 @@
+// personal acess token
+
+//   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
+
+// add in a production for heroku
+
+//  "dialectOptions": {
+//       "ssl": {
+//         "require": true,
+//         "rejectUnauthorized": false
+//       }
+//     }
+
