@@ -1,8 +1,6 @@
 body {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  background-color:pink;
+  font-family: "Times New Roman", "Gill Sans MT",  "Trebuchet MS", sans-serif;
 }
-
 .todoItem:hover .trashIcone {
   display: block;
 }
