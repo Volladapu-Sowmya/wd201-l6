@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notEmpty: {
-            msg: "Please provide email_id",
+            msg: "Please provide valid email_id",
           },
         },
       },

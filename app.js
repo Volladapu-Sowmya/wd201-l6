@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const { Todo, User } = require("./models");
 const cookieParser = require("cookie-parser");
-
+// const csrf = require("csurf");
 const csrf = require("tiny-csrf");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -60,7 +60,7 @@ passport.use(
             }
           } else {
             return done(null, false, {
-              message: "With This email user doesn't exists",
+              message: "With This email user does not exists",
             });
           }
         })
@@ -72,7 +72,7 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  console.log("Serialize the user with Id : ", user.id);
+  console.log("Serialize user with Id : ", user.id);
   done(null, user.id);
 });
 
@@ -166,10 +166,10 @@ app.post("/todos", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     if (error.name == "SequelizeValidationError") {
       error.errors.forEach((e) => {
         if (e.message == "Title length must greater than 5") {
-          req.flash("error", "Title length must greater than or equal to 5");
+          req.flash("error", "Title length should be greater than or equal to 5");
         }
-        if (e.message == "Please enter a valid date") {
-          req.flash("error", "Please enter a valid date");
+        if (e.message == "Please enter the valid date") {
+          req.flash("error", "Please enter the valid date");
         }
       });
       return res.redirect("/todos");
@@ -285,3 +285,5 @@ app.post("/users", async (req, res) => {
 });
 
 module.exports = app;
+
+// HTMLBodyElement
